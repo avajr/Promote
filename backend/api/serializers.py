@@ -11,45 +11,45 @@ from .models import JobModel, \
 
 
 # Serializer for Job model
-class JobModel(serializers.ModelSerializer):
+class JobSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Staff model
-class StaffModel(serializers.ModelSerializer):
+class StaffSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for FAQ model
-class FAQModel(serializers.ModelSerializer):
+class FAQSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Service model
-class ServiceModel(serializers.ModelSerializer):
+class ServiceSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Contact model
-class ContactModel(serializers.ModelSerializer):
+class ContactSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Testimonial model
-class TestimonialModel(serializers.ModelSerializer):
+class TestimonialSerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for CaseStudy model
-class CaseStudyModel(serializers.ModelSerializer):
+class CaseStudySerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Category model
-class CategoryModel(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     pass
 
 
 # Serializer for Blog model
-class BlogModel(serializers.ModelSerializer):
+class BlogSerializer(serializers.ModelSerializer):
     pass
