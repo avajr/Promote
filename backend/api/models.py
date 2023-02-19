@@ -16,7 +16,7 @@ class JobModel(models.Model):
 
 # Staff model (Auth model for staff on company)
 class StaffModel(AbstractUser):
-    # picture = models.ImageField(upload_to="staff/")
+    picture = models.ImageField(upload_to="staff/")
     username = models.CharField("username", max_length=150, null=True, blank=True)
     first_name = models.CharField("first name", max_length=150)
     last_name = models.CharField("last name", max_length=150)
@@ -41,7 +41,7 @@ class StaffModel(AbstractUser):
 
 
 # FAQ model (for Frequently Asked Questions)
-class FAQmodel(models.Model):
+class FAQModel(models.Model):
     question = models.CharField("question", max_length=255)
     answer = models.CharField("answer", max_length=255)
 
@@ -55,6 +55,7 @@ class FAQmodel(models.Model):
 
 # Service model
 class ServiceModel(models.Model):
+    icon = models.ImageField(upload_to="service-icons/")
     name = models.CharField("service", max_length=100)
     description = models.TextField("description")
     about_service_title = models.CharField(max_length=100)
@@ -87,11 +88,11 @@ class ContactModel(models.Model):
 
 # Testimonial model (for company's feedbacks)
 class TestimonialModel(models.Model):
-    # company = models.ImageField(upload_to="clients/company/")
-    company = models.CharField(max_length=100)
+    company = models.ImageField(upload_to="clients/company/")
+    # company = models.CharField(max_length=100)
     feedback = models.TextField("feedback")
     rate_stars = models.PositiveIntegerField()
-    # client_picture = models.ImageField(upload_to="clients/picture/")
+    client_picture = models.ImageField(upload_to="clients/picture/")
     client_full_name = models.CharField(max_length=100)
     client_job = models.ForeignKey(JobModel, on_delete=models.RESTRICT)
     created_at = models.DateField(auto_now_add=True)
@@ -106,8 +107,8 @@ class TestimonialModel(models.Model):
 
 # Case Study model
 class CaseStudyModel(models.Model):
-    # cover_img = models.ImageField(upload_to="case_studies/")
-    # company_logo = models.ImageField(upload_to="case_studies/companies/")
+    cover_img = models.ImageField(upload_to="case_studies/")
+    company_logo = models.ImageField(upload_to="case_studies/companies/")
     title = models.CharField("title", max_length=255)
     client = models.CharField("client", max_length=100)
     service = models.ForeignKey(ServiceModel, on_delete=models.RESTRICT)
@@ -125,7 +126,7 @@ class CaseStudyModel(models.Model):
 
 
 # Category model (for category of blogs)
-class Category(models.Model):
+class CategoryModel(models.Model):
     name = models.CharField("category", max_length=100)
 
     def __str__(self):
@@ -138,10 +139,10 @@ class Category(models.Model):
 
 # Blog model
 class BlogModel(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.RESTRICT)
+    category = models.ForeignKey(CategoryModel, on_delete=models.RESTRICT)
     title = models.CharField("title", max_length=255)
     content = models.TextField("content")
-    # cover_img = models.ImageField(upload_to="blogs/")
+    cover_img = models.ImageField(upload_to="blogs/")
     author = models.ForeignKey(StaffModel, on_delete=models.RESTRICT)
     created_at = models.DateField(auto_now_add=True)
 
