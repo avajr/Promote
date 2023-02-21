@@ -4,10 +4,10 @@ from django.contrib.auth.models import AbstractUser
 
 # Job model (to define the role of staff in the company)
 class JobModel(models.Model):
-    career = models.CharField("career", max_length=128)
+    job = models.CharField("job", max_length=128)
 
     def __str__(self):
-        return self.career
+        return self.job
 
     class Meta:
         verbose_name = "Job"
@@ -17,16 +17,18 @@ class JobModel(models.Model):
 # Staff model (Auth model for staff on company)
 class StaffModel(AbstractUser):
     picture = models.ImageField(upload_to="staff/")
-    username = models.CharField("username", max_length=150, null=True, blank=True)
+    username = models.CharField("username", max_length=150, null=True, blank=True, unique=True, error_messages={
+        "unique": "A user with that username already exists.",
+    }, )
     first_name = models.CharField("first name", max_length=150)
     last_name = models.CharField("last name", max_length=150)
     email = models.EmailField("email address")
     password = models.CharField("password", max_length=128)
-    is_staff = models.BooleanField(
-        "staff status",
-        default=True,
-        help_text="Designates whether the user can log into this admin site.",
-    ),
+    # is_staff = models.BooleanField(
+    #     "staff status",
+    #     default=False,
+    #     help_text="Designates whether the user can log into this admin site.",
+    # ),
     job = models.ForeignKey(JobModel, on_delete=models.RESTRICT),
     instagram_url = models.CharField("instagram url", max_length=300, blank=True, null=True)
     facebook_url = models.CharField("facebook url", max_length=300, blank=True, null=True)
@@ -74,7 +76,7 @@ class ContactModel(models.Model):
     full_name = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
     email = models.EmailField("email address")
-    subject = models.CharField("subject")
+    subject = models.CharField("subject", max_length=100)
     message = models.TextField("message")
     created_at = models.DateField("created date", auto_now_add=True)
 

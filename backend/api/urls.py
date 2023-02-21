@@ -1,4 +1,6 @@
 from django.urls import path
+from .views import TestAPI
 
-
-urlpatterns = []
+urlpatterns = [
+    path('', TestAPI.as_view())
+]

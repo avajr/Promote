@@ -1,3 +1,25 @@
-from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView
+from .serializers import JobSerializer, \
+    StaffSerializer, \
+    FAQSerializer, \
+    ServiceSerializer, \
+    ContactSerializer, \
+    TestimonialSerializer, \
+    CaseStudySerializer, \
+    CategorySerializer, \
+    BlogSerializer
+from .models import JobModel, \
+    StaffModel, \
+    FAQModel, \
+    ServiceModel, \
+    ContactModel, \
+    TestimonialModel, \
+    CaseStudyModel, \
+    CategoryModel, \
+    BlogModel
 
-# Create your views here.
+
+class TestAPI(ListCreateAPIView):
+    serializer_class = StaffSerializer
+    queryset = StaffModel.objects.all()
+

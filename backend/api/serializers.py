@@ -12,12 +12,31 @@ from .models import JobModel, \
 
 # Serializer for Job model
 class JobSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = JobModel
+        fields = ['id', 'job']
+
+    # Method for creation
+    def create(self, validated_data):
+        job = JobModel(**validated_data)
+        job.save()
+        return job
+
 
 
 # Serializer for Staff model
 class StaffSerializer(serializers.ModelSerializer):
-    pass
+    # job = JobSerializer(read_only=True)
+    class Meta:
+        model = StaffModel
+        fields = ['picture', 'username', 'first_name', 'last_name', 'email', 'password', 'is_staff',
+                  'instagram_url', 'facebook_url', 'twitter_url']
+
+    def create(self, validated_data):
+        staff = StaffModel(**validated_data)
+        staff.set_password(validated_data['password'])
+        staff.save()
+        return staff
 
 
 # Serializer for FAQ model
