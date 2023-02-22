@@ -20,6 +20,6 @@ from .models import JobModel, \
 
 
 class TestAPI(ListCreateAPIView):
-    serializer_class = StaffSerializer
-    queryset = StaffModel.objects.all()
+    serializer_class = TestimonialSerializer
+    queryset = TestimonialModel.objects.all()
 

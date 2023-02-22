@@ -41,22 +41,50 @@ class StaffSerializer(serializers.ModelSerializer):
 
 # Serializer for FAQ model
 class FAQSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = FAQModel
+        fields = "__all__"
+    def create(self, validated_data):
+        faq = FAQModel(**validated_data)
+        faq.save()
+        return faq
 
 
 # Serializer for Service model
 class ServiceSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = ServiceModel
+        fields = "__all__"
+
+    def create(self, validated_data):
+        service = ServiceModel(**validated_data)
+        service.save()
+        return service
 
 
 # Serializer for Contact model
 class ContactSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = ContactModel
+        fields = "__all__"
+
+    def create(self, validated_data):
+        contact = ContactModel(**validated_data)
+        contact.save()
+        return contact
 
 
 # Serializer for Testimonial model
 class TestimonialSerializer(serializers.ModelSerializer):
-    pass
+    client_job = JobSerializer()
+    class Meta:
+        model = TestimonialModel
+        fields = "__all__"
+
+    def create(self, validated_data):
+        testimonial = TestimonialModel(**validated_data)
+        testimonial.save()
+        return testimonial
 
 
 # Serializer for CaseStudy model
