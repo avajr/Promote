@@ -29,7 +29,7 @@ class StaffModel(AbstractUser):
     #     default=False,
     #     help_text="Designates whether the user can log into this admin site.",
     # ),
-    job = models.ForeignKey(JobModel, on_delete=models.RESTRICT),
+    job = models.ForeignKey(JobModel, on_delete=models.PROTECT)
     instagram_url = models.CharField("instagram url", max_length=300, blank=True, null=True)
     facebook_url = models.CharField("facebook url", max_length=300, blank=True, null=True)
     twitter_url = models.CharField("twitter url", max_length=300, blank=True, null=True)
