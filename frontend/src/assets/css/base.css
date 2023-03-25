@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;800&display=swap");
 :root {
 	/* Font size */
-	--body-text: 18px;
-	--display-text: 70px;
-	--h1-text: 45px;
-	--h2-text: 40px;
-	--h3-text: 35px;
-	--h4-text: 30px;
-	--h5-text: 25px;
-	--h6-text: 20px;
+	--body-text: 1rem; /* 16px */
+	--display-text: 4.375rem; /* 70px */
+	--h1-text: 2.8125rem; /* 45px */
+	--h2-text: 2.5rem; /* 40px */
+	--h3-text: 2.1875rem; /* 35px */
+	--h4-text: 1.875rem; /* 30px */
+	--h5-text: 1.5625rem; /* 25px */
+	--h6-text: 1.25rem; /* 20px */
 
 	/* Colors */
 	--primary-gold: rgba(255, 220, 96, 1);
@@ -20,7 +20,13 @@
 	/*  */
 }
 
+* {
+	transition: all 0.3s ease-in-out;
+}
+
 body {
+	width: 100%;
+	height: max-content;
 	font-size: var(--body-text);
 	font-family: "Nunito", sans-serif;
 	background-color: #fff;
@@ -29,14 +35,16 @@ body {
 
 /* COMPONENT CLASSES */
 .container {
-	max-width: 1200px;
+	max-width: 1240px;
 	width: 100%;
+	margin: 0px auto;
+	padding: 0px 20px;
 }
 
 /* Headings */
 .display-text {
-	font-size: var(--display-text);
-	font-weight: 800;
+	font-size: var(--display-text) !important;
+	font-weight: 800 !important;
 	color: var(--secondary-dark);
 }
 h1 {
@@ -74,6 +82,9 @@ h6 {
 .gold-text {
 	color: var(--primary-gold);
 }
+.blue-text {
+	color: var(--primary-blue);
+}
 .dark-text {
 	color: var(--secondary-dark);
 }
@@ -96,4 +107,35 @@ h6 {
 }
 .bg-light {
 	background-color: var(--secondary-light);
+}
+
+/* Media */
+@media screen and (max-width: 996px) {
+	:root {
+		/* Font size */
+		--body-text: calc(1rem - 4px) !important; /* 16px */
+		--display-text: calc(4.375rem - 1.175rem) !important; /* 70px */
+		--h1-text: calc(2.8125rem - 4px) !important; /* 45px */
+		--h2-text: calc(2.5rem - 4px) !important; /* 40px */
+		--h3-text: calc(2.1875rem - 4px) !important; /* 35px */
+		--h4-text: calc(1.875rem - 4px) !important; /* 30px */
+		--h5-text: calc(1.5625rem - 4px) !important; /* 25px */
+		--h6-text: calc(1.25rem - 4px) !important; /* 20px */
+	}
+	/* html {
+		font-size: 112.5%;
+	} */
+}
+@media screen and (max-width: 470px) {
+	:root {
+		/* Font size */
+		--body-text: calc(1rem - 4px) !important; /* 16px */
+		--display-text: calc(4.375rem - 2rem) !important; /* 70px */
+		--h1-text: calc(2.8125rem - 4px) !important; /* 45px */
+		--h2-text: calc(2.5rem - 4px) !important; /* 40px */
+		--h3-text: calc(2.1875rem - 4px) !important; /* 35px */
+		--h4-text: calc(1.875rem - 4px) !important; /* 30px */
+		--h5-text: calc(1.5625rem - 4px) !important; /* 25px */
+		--h6-text: calc(1.25rem - 4px) !important; /* 20px */
+	}
 }
