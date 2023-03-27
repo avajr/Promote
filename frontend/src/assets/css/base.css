@@ -24,7 +24,8 @@
 	transition: all 0.3s ease-in-out;
 }
 
-body {
+body,
+#app {
 	width: 100%;
 	height: max-content;
 	font-size: var(--body-text);
@@ -35,6 +36,10 @@ body {
 
 section {
 	padding: 100px 0px;
+}
+
+hr {
+	opacity: 0.5;
 }
 
 /* COMPONENT CLASSES */
@@ -112,6 +117,14 @@ p {
 }
 .bg-light {
 	background-color: var(--secondary-light);
+}
+
+/* SECTION  */
+.section__header {
+	display: flex;
+	column-gap: 24px;
+	margin-bottom: 32px;
+	align-items: center;
 }
 
 /* Media */

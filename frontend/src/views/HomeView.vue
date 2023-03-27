@@ -263,6 +263,9 @@
 									</p>
 								</div>
 							</div>
+							<div style="text-align: center">
+								<CtaBtnOutline cta="About us" link="/about/" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -422,6 +425,7 @@
 		flex-direction: column;
 		row-gap: 40px;
 	}
+	
 
 	/* RESPONSIVE | MEDIA */
 	@media screen and (max-width: 1090px) {
