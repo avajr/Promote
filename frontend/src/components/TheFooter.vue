@@ -117,6 +117,14 @@
 		text-align: center;
 	}
 
+	/* Logo */
+	.footer__logo {
+		width: 100%;
+	}
+	.footer__logo img {
+		width: 100%;
+	}
+
 	/* Address */
 	.footer__address {
 		width: 400px;
