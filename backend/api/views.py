@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView
 from .serializers import JobSerializer, \
     StaffSerializer, \
     FAQSerializer, \
@@ -39,7 +39,7 @@ class ServiceAPIView(ListAPIView):
     queryset = ServiceModel.objects.all()
 
 
-class ContactAPIView(ListAPIView):
+class ContactAPIView(ListCreateAPIView):
     serializer_class = ContactSerializer
     queryset = ContactModel.objects.all()
 
@@ -53,6 +53,9 @@ class CaseStudyAPIView(ListAPIView):
     serializer_class = CaseStudySerializer
     queryset = CaseStudyModel.objects.all()
 
+class CaseStudyRetrieveAPIView(RetrieveAPIView):
+    serializer_class = CaseStudySerializer
+    queryset = CaseStudyModel.objects.all()
 
 class CategoryAPIView(ListAPIView):
     serializer_class = CategorySerializer
@@ -60,5 +63,9 @@ class CategoryAPIView(ListAPIView):
 
 
 class BlogAPIView(ListAPIView):
+    serializer_class = BlogSerializer
+    queryset = BlogModel.objects.all()
+
+class BlogRetrieveAPIView(RetrieveAPIView):
     serializer_class = BlogSerializer
     queryset = BlogModel.objects.all()

@@ -20,10 +20,11 @@ class JobSerializer(serializers.ModelSerializer):
 # Serializer for Staff model
 class StaffSerializer(serializers.ModelSerializer):
     job = JobSerializer()
+    is_staff = serializers.BooleanField()
 
     class Meta:
         model = StaffModel
-        fields = ['picture', 'username', 'first_name', 'last_name', 'email', 'password', 'is_staff', 'job',
+        fields = ['picture', 'username', 'first_name', 'last_name', 'email', 'is_staff', 'job',
                   'instagram_url', 'facebook_url', 'twitter_url']
 
 
@@ -46,6 +47,9 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactModel
         fields = "__all__"
+
+    def create(self, validated_data):
+        return ContactModel.objects.create(**validated_data)
 
 
 # Serializer for Testimonial model

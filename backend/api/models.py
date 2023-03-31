@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from ckeditor.fields import RichTextField
 
 
 # Job model (to define the role of staff in the company)
@@ -24,11 +25,11 @@ class StaffModel(AbstractUser):
     last_name = models.CharField("last name", max_length=150)
     email = models.EmailField("email address")
     password = models.CharField("password", max_length=128)
-    # is_staff = models.BooleanField(
-    #     "staff status",
-    #     default=False,
-    #     help_text="Designates whether the user can log into this admin site.",
-    # ),
+    is_staff = models.BooleanField(
+        "staff status",
+        default=True,
+        help_text="Designates whether the user can log into this admin site.",
+    ),
     job = models.ForeignKey(JobModel, on_delete=models.PROTECT)
     instagram_url = models.CharField("instagram url", max_length=300, blank=True, null=True)
     facebook_url = models.CharField("facebook url", max_length=300, blank=True, null=True)
@@ -60,8 +61,6 @@ class ServiceModel(models.Model):
     icon = models.ImageField(upload_to="service-icons/")
     name = models.CharField("service", max_length=100)
     description = models.TextField("description")
-    about_service_title = models.CharField(max_length=100)
-    about_service = models.TextField("about service")
 
     def __str__(self):
         return self.name
@@ -73,7 +72,7 @@ class ServiceModel(models.Model):
 
 # Contact model (for all contacted information)
 class ContactModel(models.Model):
-    full_name = models.CharField(max_length=100)
+    full_name  = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
     email = models.EmailField("email address")
     subject = models.CharField("subject", max_length=100)
@@ -93,7 +92,6 @@ class TestimonialModel(models.Model):
     company = models.ImageField(upload_to="clients/company/")
     # company = models.CharField(max_length=100)
     feedback = models.TextField("feedback")
-    rate_stars = models.PositiveIntegerField()
     client_picture = models.ImageField(upload_to="clients/picture/")
     client_full_name = models.CharField(max_length=100)
     client_job = models.ForeignKey(JobModel, on_delete=models.RESTRICT)
@@ -116,7 +114,8 @@ class CaseStudyModel(models.Model):
     service = models.ForeignKey(ServiceModel, on_delete=models.RESTRICT)
     platform = models.CharField("platform", max_length=100)
     results = models.PositiveBigIntegerField("results")
-    content = models.TextField()
+    short_description = models.TextField()
+    content = RichTextField()
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):
@@ -141,11 +140,10 @@ class CategoryModel(models.Model):
 
 # Blog model
 class BlogModel(models.Model):
-    category = models.ForeignKey(CategoryModel, on_delete=models.RESTRICT)
     title = models.CharField("title", max_length=255)
-    content = models.TextField("content")
+    short_description = models.TextField()
+    content = RichTextField()
     cover_img = models.ImageField(upload_to="blogs/")
-    author = models.ForeignKey(StaffModel, on_delete=models.RESTRICT)
     created_at = models.DateField(auto_now_add=True)
 
     def __str__(self):

@@ -35,7 +35,7 @@
 									/>
 									Email
 								</h5>
-								<p>csdeveloper.acc@gmail.com</p>
+								<p>avpromoteagency@gmail.com</p>
 							</div>
 						</div>
 					</div>
@@ -58,11 +58,7 @@
 				</div>
 
 				<!-- CONTACT FORM -->
-				<form
-					action=""
-					class="contact-form"
-					@submit.prevent="handleSubmit"
-				>
+				<form action="" class="contact-form" @submit="handleSubmit">
 					<div>
 						<label for="full_name">
 							<h6>Full Name *</h6>
@@ -70,6 +66,7 @@
 								type="text"
 								id="full_name"
 								name="full_name"
+								v-model="formData.full_name"
 								placeholder="John David"
 								required
 							/>
@@ -80,6 +77,7 @@
 								type="email"
 								id="email"
 								name="email"
+								v-model="formData.email"
 								placeholder="mymail@example.com"
 								required
 							/>
@@ -90,6 +88,7 @@
 								type="text"
 								id="company"
 								name="company"
+								v-model="formData.company"
 								placeholder="Company Name"
 								required
 							/>
@@ -100,6 +99,7 @@
 								type="text"
 								id="subject"
 								name="subject"
+								v-model="formData.subject"
 								placeholder="How Can We Help"
 								required
 							/>
@@ -111,6 +111,7 @@
 							type="text"
 							id="message"
 							name="message"
+							v-model="formData.message"
 							placeholder="Hello there. I would like to talk about how to..."
 							required
 						/>
@@ -168,12 +169,25 @@
 	import { onMounted, reactive, ref } from "vue";
 
 	// Variables
+	const formData = {
+		full_name: "",
+		company: "",
+		email: "",
+		subject: "",
+		message: "",
+	};
 	let faqs = ref();
 	let activeFAQ = ref(-1);
 
 	// Methods
-	const handleSubmit = () => {
-		alert("Submit");
+	const handleSubmit = async () => {
+		await $axios.post("/contacts/", formData);
+		formData.full_name = "";
+		formData.company = "";
+		formData.email = "";
+		formData.subject = "";
+		formData.message = "";
+		console.log(formData);
 	};
 	const getFaqs = async (url) => {
 		const response = await $axios.get(url);
@@ -284,6 +298,11 @@
 		border-radius: 8px;
 		color: #fff;
 		background-color: var(--secondary-dark);
+		cursor: pointer;
+		transition: all 0.2s ease-in-out;
+	}
+	.contact-form div.btn-wrapper button:focus {
+		opacity: 0.9;
 	}
 
 	/* FAQs */
@@ -311,8 +330,8 @@
 	}
 	.faq .faq-title span {
 		display: flex;
-		width: 40px;
-		height: 40px;
+		min-width: 40px;
+		min-height: 40px;
 		justify-content: center;
 		align-items: center;
 		border-radius: 50%;

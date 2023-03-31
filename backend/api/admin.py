@@ -12,7 +12,12 @@ class StaffModelAdmin(admin.ModelAdmin):
 admin.site.register(JobModel)
 admin.site.register(FAQModel)
 admin.site.register(ServiceModel)
-admin.site.register(ContactModel)
+@admin.register(ContactModel)
+class ContactModelAdmin(admin.ModelAdmin):
+    list_display = ["company", "email", "subject", "created_at"]
+    list_display_links = ["company", "email"]
+    readonly_fields = ["full_name", "company", "email", "subject", "message", "created_at"]
+    ordering = ["-created_at"]
 admin.site.register(TestimonialModel)
 admin.site.register(CaseStudyModel)
 admin.site.register(CategoryModel)

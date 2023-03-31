@@ -13,9 +13,9 @@ const routes = [
 		component: import("@/views/AboutView.vue"),
 	},
 	{
-		name: "services",
-		path: "/services/",
-		component: import("@/views/ServicesView.vue"),
+		name: "case-study",
+		path: "/case-study/",
+		component: import("@/views/CaseStudyView.vue"),
 	},
 	{
 		name: "blog",
@@ -23,9 +23,19 @@ const routes = [
 		component: import("@/views/BlogView.vue"),
 	},
 	{
+		name: "blog-detail",
+		path: "/blog/:id",
+		component: import("@/views/BlogDetailView.vue"),
+	},
+	{
 		name: "contact",
 		path: "/contact/",
 		component: import("@/views/ContactView.vue"),
+	},
+	{
+		name: "case-study-detail",
+		path: "/case-study/:id",
+		component: import("@/views/CaseStudyDetailView.vue"),
 	},
 ];
 

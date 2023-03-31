@@ -22,6 +22,7 @@
 
 * {
 	transition: all 0.3s ease-in-out;
+	scroll-behavior: smooth;
 }
 
 body,
@@ -32,6 +33,7 @@ body,
 	font-family: "Nunito", sans-serif;
 	background-color: #fff;
 	color: var(--secondary-gray);
+	scroll-behavior: smooth;
 }
 
 section {
@@ -157,7 +159,3 @@ p {
 		--h6-text: calc(1.25rem - 4px) !important; /* 20px */
 	}
 }
-
-
-
-

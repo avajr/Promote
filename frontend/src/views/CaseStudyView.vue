@@ -5,7 +5,7 @@
 			:style="{ 'background-image': 'url(' + banner_bg + ')' }"
 		>
 			<h1 class="display-text">
-				Our <span class="blue-text">Blog</span>
+				Case <span class="blue-text">Study</span>
 			</h1>
 		</header>
 		<section id="case-studies">
@@ -14,36 +14,34 @@
 					<img src="@/assets/img/icons/sections/copy.svg" alt="" />
 					<div class="section__titles">
 						<p class="" style="opacity: 0.8">
-							<span class="gold-text">//</span> ARTICLES
+							<span class="gold-text">//</span> CASE STUDIES
 						</p>
-						<h2 class="">Browse our content on growth marketing</h2>
+						<h2 class="">Browse our case studies</h2>
 					</div>
 				</div>
 				<div class="case-studies-list">
 					<ul>
 						<li
 							class="card"
-							v-for="blog in paginatedData"
-							:key="blog.id"
+							v-for="caseStudy in paginatedData"
+							:key="caseStudy.id"
 						>
 							<div class="card-img">
-								<img :src="blog.cover_img" alt="" />
+								<img :src="caseStudy.cover_img" alt="" />
 							</div>
 							<div class="card-content">
-								<div
-									class="card-content-top"
-									style="margin-bottom: 20px"
-								>
-									<span>{{ blog.created_at }}</span>
+								<div class="company_logo">
+									<img :src="caseStudy.company_logo" alt="" />
 								</div>
+								<hr />
 								<h5 style="font-weight: 600">
-									{{ blog.title }}
+									{{ caseStudy.title }}
 								</h5>
-								<p>{{ blog.short_description }}</p>
+								<p>{{ caseStudy.short_description }}</p>
 								<router-link
 									class="btn"
-									:to="`/blog/${blog.id}`"
-									>Read More</router-link
+									:to="`/case-study/${caseStudy.id}`"
+									>Read Case Study</router-link
 								>
 							</div>
 						</li>
@@ -73,7 +71,7 @@
 	import { $axios } from "@/plugins/axios";
 	import { onMounted, reactive, ref, computed } from "vue";
 
-	let blogs = ref();
+	let caseStudies = ref();
 
 	const data = ref([]);
 
@@ -98,16 +96,16 @@
 		currentPage.value -= 1;
 	}
 
-	const getBlogs = async (url) => {
+	const getCaseStudies = async (url) => {
 		const response = await $axios.get(url);
-		blogs.value = response.data;
+		caseStudies.value = response.data;
 		data.value = response.data;
 		console.log(response.data);
 	};
 
 	// Life Cycle
 	onMounted(() => {
-		getBlogs("/blogs/");
+		getCaseStudies("/case-studies/");
 	});
 </script>
 
@@ -132,14 +130,19 @@
 	}
 
 	.card {
-		min-height: 480px;
+		min-height: 560px;
 		list-style: none;
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		column-gap: 50px;
 		width: 100%;
 		padding: 50px;
-		background: #fff3ca;
+		background: linear-gradient(
+			124.11deg,
+			#e9f7ff 5.58%,
+			#ffdbd5 21.8%,
+			#fff3ca 37.36%
+		);
 		border-radius: 10px;
 		margin: 25px 0px;
 	}
@@ -155,7 +158,7 @@
 	}
 	.card-content {
 		border-radius: 10px;
-		background-color: transperant;
+		background-color: #fff;
 		padding: 50px 40px;
 	}
 	hr {

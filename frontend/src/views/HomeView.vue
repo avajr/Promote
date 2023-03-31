@@ -24,12 +24,51 @@
 						erroribus forensibus.
 					</p>
 					<div class="header__btns">
-						<CtaBtn cta="Our Services" link="/services/" />
 						<CtaBtnOutline cta="Contact Us" link="/contact/" />
 					</div>
 				</div>
 			</div>
 		</header>
+
+		<!-- SERVICES -->
+		<section id="services" class="bg-dark">
+			<div class="container">
+				<div class="services__content">
+					<div class="section__header">
+						<img
+							src="@/assets/img/icons/sections/gears-blue.svg"
+							alt=""
+						/>
+						<div class="section__titles">
+							<p class="light-text" style="opacity: 0.8">
+								<span class="gold-text">//</span> OUR SERVICES
+							</p>
+							<h2 class="light-text">
+								High-impact services to take your business to
+								the next level
+							</h2>
+						</div>
+					</div>
+					<div class="services-list">
+						<div
+							class="service-card"
+							v-for="service in servicesData"
+							:key="service.id"
+						>
+							<div class="service-card__icon">
+								<img :src="service.icon" alt="" />
+							</div>
+							<h5 class="service-card__title light-text">
+								{{ service.name }}
+							</h5>
+							<p class="light-text" style="opacity: 0.7">
+								{{ service.description }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- TESTIMONIAL -->
 		<section class="testimonial-section">
@@ -291,6 +330,7 @@
 
 	// Variable Data
 	let testimonialData = ref();
+	let servicesData = ref();
 	const swiperOptions = reactive({
 		breakpoints: {
 			0: {
@@ -309,10 +349,17 @@
 		testimonialData.value = await response.data;
 		console.log(response);
 	};
+	const getServices = async (url) => {
+		const response = await $axios.get(url);
+		servicesData.value = await response.data;
+		console.log(response);
+		console.log(servicesData.value);
+	};
 
 	// Life Cycles
 	onMounted(() => {
 		getTestimonials("/testimonials/");
+		getServices("/services/");
 	});
 </script>
 
@@ -350,6 +397,38 @@
 	.header__btns {
 		display: flex;
 		column-gap: 20px;
+	}
+
+	/* SERVICES */
+	.services-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 50px;
+	}
+	.service-card {
+		border-radius: 30px;
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: 20px;
+		background: linear-gradient(180deg, #36363e 0%, #292930 100%);
+		border: 1px solid #424249;
+	}
+	.service-card__icon {
+		max-width: 150px;
+		max-height: 150px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--secondary-dark);
+		border-radius: 50%;
+		padding: 2rem;
+	}
+	.service-card__icon img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 	}
 
 	/* TESTIMONIAL */
@@ -425,7 +504,6 @@
 		flex-direction: column;
 		row-gap: 40px;
 	}
-	
 
 	/* RESPONSIVE | MEDIA */
 	@media screen and (max-width: 1090px) {

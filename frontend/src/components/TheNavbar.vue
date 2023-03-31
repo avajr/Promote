@@ -8,11 +8,12 @@
 				<li class="nav-link">
 					<router-link to="/">Home</router-link>
 				</li>
+
 				<li class="nav-link">
 					<router-link to="/about/">About</router-link>
 				</li>
 				<li class="nav-link">
-					<router-link to="/services/">Services</router-link>
+					<router-link to="/case-study/">Case Study</router-link>
 				</li>
 				<li class="nav-link">
 					<router-link to="/blog/">Blog</router-link>
