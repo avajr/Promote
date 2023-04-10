@@ -11,7 +11,7 @@
 		<section id="case-studies">
 			<div class="container">
 				<div class="section__header">
-					<img src="@/assets/img/icons/sections/copy.svg" alt="" />
+					<img src="@/assets/img/icons/sections/doc.svg" alt="" />
 					<div class="section__titles">
 						<p class="" style="opacity: 0.8">
 							<span class="gold-text">//</span> ARTICLES

@@ -191,7 +191,7 @@
 									</a>
 									<a
 										:href="staff.facebook_url"
-										v-if="staff.instagram_url"
+										v-if="staff.facebook_url"
 									>
 										<img
 											src="@/assets/img/icons/socials/Facebook.svg"
@@ -200,7 +200,7 @@
 									</a>
 									<a
 										:href="staff.twitter_url"
-										v-if="staff.instagram_url"
+										v-if="staff.twitter_url"
 									>
 										<img
 											src="@/assets/img/icons/socials/Twitter.svg"
@@ -242,12 +242,12 @@
 			0: {
 				slidesPerView: 1,
 			},
-			820: {
-				slidesPerView: 2,
-			},
-			1190: {
+			768: {
 				slidesPerView: 3,
 			},
+			// 1190: {
+			// 	slidesPerView: 3,
+			// },
 		},
 		modules: [Pagination],
 	});
@@ -256,12 +256,12 @@
 			0: {
 				slidesPerView: 1,
 			},
-			820: {
-				slidesPerView: 2,
-			},
-			1190: {
+			768: {
 				slidesPerView: 3,
 			},
+			// 1190: {
+			// 	slidesPerView: 3,
+			// },
 		},
 		modules: [Pagination],
 	});

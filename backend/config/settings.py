@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -126,8 +127,18 @@ AUTH_USER_MODEL = 'api.StaffModel'
 
 # EMAIL SETTINGS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'avpromoteagency@gmail.com'
+EMAIL_HOST_USER = 'avpromoteagency@yahoo.com'
 EMAIL_HOST_PASSWORD = 'A10B11D13'
+
+
+# CKEDITOR
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        "toolbar": "full"
+    }
+}
+
