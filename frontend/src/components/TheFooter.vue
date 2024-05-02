@@ -92,7 +92,7 @@
 			</div>
 			<p id="copyright">
 				Copyright &copy; Abdurakhmon Abdulkhakimov | Designed by
-				VictorFlow - Powered by Webflow
+				VictorFlow
 			</p>
 		</div>
 	</footer>

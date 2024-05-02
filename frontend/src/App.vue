@@ -14,4 +14,7 @@
 		width: 100%;
 		height: max-content;
 	}
+  #app p {
+    line-height: 180%;
+  }
 </style>

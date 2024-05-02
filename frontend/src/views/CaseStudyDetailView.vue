@@ -22,7 +22,7 @@
 					</div>
 					<div>
 						<h5>Service</h5>
-						<p>{{ caseStudy.service.name }}</p>
+						<p>{{ caseStudy.service.title }}</p>
 					</div>
 					<div>
 						<h5>Platform</h5>

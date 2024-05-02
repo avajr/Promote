@@ -175,11 +175,10 @@
 									<img :src="staff.picture" alt="" />
 								</div>
 								<div>
-									<h5>{{ staff.first_name }}</h5>
-									<h5>{{ staff.last_name }}</h5>
-									<p>{{ staff.job.job }}</p>
+									<h4>{{ staff.first_name }} {{staff.last_name}}</h4>
+									<p>{{ staff.job.title }}</p>
 								</div>
-								<div class="socials">
+								<span class="socials">
 									<a
 										:href="staff.instagram_url"
 										v-if="staff.instagram_url"
@@ -207,7 +206,7 @@
 											alt=""
 										/>
 									</a>
-								</div>
+								</span>
 							</SwiperSlide>
 						</Swiper>
 					</div>
@@ -352,7 +351,10 @@
 	}
 
 	.staff-card div {
-		text-align: center;
+		display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 	}
 	.socials {
 		width: 100%;

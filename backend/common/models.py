@@ -24,7 +24,7 @@ class Service(BaseModel):
     description = models.TextField("description")
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Service"

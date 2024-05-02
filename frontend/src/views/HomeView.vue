@@ -59,7 +59,7 @@
 								<img :src="service.icon" alt="" />
 							</div>
 							<h5 class="service-card__title light-text">
-								{{ service.name }}
+								{{ service.title }}
 							</h5>
 							<p class="light-text" style="opacity: 0.7">
 								{{ service.description }}
@@ -97,11 +97,13 @@
 					>
 						<div class="testimonial__inner">
 							<div class="testimonial__content">
-								<div class="testimonial__content___company">
-									<img :src="testimonial.company" alt="" />
-									<h5>Company</h5>
-								</div>
-								<hr />
+                <div class="testimonial__content__top">
+                  <div class="testimonial__content___company">
+                    <img :src="testimonial.company" alt="" />
+                  </div>
+                  <h5>Company</h5>
+                </div>
+                <hr />
 								<p>{{ testimonial.feedback }}</p>
 							</div>
 							<div class="testimonial__author">
@@ -113,115 +115,7 @@
 								</div>
 								<div class="testimonial__author___info">
 									<h6>{{ testimonial.client_full_name }}</h6>
-									<p>{{ testimonial.client_job.job }}</p>
-								</div>
-							</div>
-						</div>
-					</swiper-slide>
-					<swiper-slide
-						:key="testimonial.id"
-						v-for="testimonial in testimonialData"
-					>
-						<div class="testimonial__inner">
-							<div class="testimonial__content">
-								<div class="testimonial__content___company">
-									<img :src="testimonial.company" alt="" />
-									<h5>Company</h5>
-								</div>
-								<hr />
-								<p>{{ testimonial.feedback }}</p>
-							</div>
-							<div class="testimonial__author">
-								<div class="testimonial__author___wrapper">
-									<img
-										:src="testimonial.client_picture"
-										alt=""
-									/>
-								</div>
-								<div class="testimonial__author___info">
-									<h6>{{ testimonial.client_full_name }}</h6>
-									<p>{{ testimonial.client_job.job }}</p>
-								</div>
-							</div>
-						</div>
-					</swiper-slide>
-					<swiper-slide
-						:key="testimonial.id"
-						v-for="testimonial in testimonialData"
-					>
-						<div class="testimonial__inner">
-							<div class="testimonial__content">
-								<div class="testimonial__content___company">
-									<img :src="testimonial.company" alt="" />
-									<h5>Company</h5>
-								</div>
-								<hr />
-								<p>{{ testimonial.feedback }}</p>
-							</div>
-							<div class="testimonial__author">
-								<div class="testimonial__author___wrapper">
-									<img
-										:src="testimonial.client_picture"
-										alt=""
-									/>
-								</div>
-								<div class="testimonial__author___info">
-									<h6>{{ testimonial.client_full_name }}</h6>
-									<p>{{ testimonial.client_job.job }}</p>
-								</div>
-							</div>
-						</div>
-					</swiper-slide>
-					<swiper-slide
-						:key="testimonial.id"
-						v-for="testimonial in testimonialData"
-					>
-						<div class="testimonial__inner">
-							<div class="testimonial__content">
-								<div class="testimonial__content___company">
-									<img :src="testimonial.company" alt="" />
-									<h5>Company</h5>
-								</div>
-								<hr />
-								<p>{{ testimonial.feedback }}</p>
-							</div>
-							<div class="testimonial__author">
-								<div class="testimonial__author___wrapper">
-									<img
-										:src="testimonial.client_picture"
-										alt=""
-									/>
-								</div>
-								<div class="testimonial__author___info">
-									<h6>{{ testimonial.client_full_name }}</h6>
-									<p>{{ testimonial.client_job.job }}</p>
-								</div>
-							</div>
-						</div>
-					</swiper-slide>
-					<swiper-slide
-						:key="testimonial.id"
-						v-for="testimonial in testimonialData"
-					>
-						<div class="testimonial__inner">
-							<div class="testimonial__content">
-								<div class="testimonial__content___company">
-									<img :src="testimonial.company" alt="" />
-									<h5>Company</h5>
-								</div>
-								<hr />
-								<p>{{ testimonial.feedback }}</p>
-							</div>
-							<div class="testimonial__author">
-								<div class="testimonial__author___wrapper">
-									<img
-										:src="testimonial.client_picture"
-										alt=""
-									/>
-								</div>
-								<div class="testimonial__author___info">
-									<h6>{{ testimonial.client_full_name }}</h6>
-									<p>{{ testimonial.client_job.job }}</p>
+									<p>{{ testimonial.client_job.title }}</p>
 								</div>
 							</div>
 						</div>
@@ -459,11 +353,27 @@
 		margin: 20px 0px;
 		opacity: 0.4;
 	}
+  .testimonial__content__top {
+    display: flex;
+    align-items: center;
+  }
 	.testimonial__content___company,
 	.testimonial__author {
 		display: flex;
 		column-gap: 12px;
 	}
+  .testimonial__content___company {
+    max-width: 60px;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .testimonial__content___company img {
+    object-fit: cover;
+    max-width: 100%;
+  }
 	.testimonial__author {
 		padding: 32px 0px;
 	}
@@ -471,9 +381,14 @@
 		width: 60px;
 		height: 60px;
 		border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 	}
 	.testimonial__author___wrapper img {
 		object-fit: cover;
+    max-width: 100%;
 	}
 
 	/* BENEFITS */

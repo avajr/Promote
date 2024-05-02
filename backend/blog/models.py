@@ -33,7 +33,7 @@ class Category(BaseModel):
     title = models.CharField("category", max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Category"

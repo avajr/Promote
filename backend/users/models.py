@@ -32,7 +32,7 @@ class Job(models.Model):
     title = models.CharField("title", max_length=128)
 
     def __str__(self):
-        return self.job
+        return self.title
 
     class Meta:
         verbose_name = "Job"
