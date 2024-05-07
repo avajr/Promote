@@ -22,6 +22,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # though not all of them may be available with every OS.
 # In Windows, this must be set to your system time zone.
 TIME_ZONE = "Asia/Tashkent"
+DATETIME_FORMAT = '%m/%d/%y %H:%M'
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#languages
@@ -40,7 +41,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
 LOCALE_PATHS = [str(BASE_DIR / "locale")]
 
-DATETIME_FORMAT = '%m/%d/%y %H:%M'
 
 # DATABASES
 # ------------------------------------------------------------------------------
