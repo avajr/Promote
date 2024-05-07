@@ -18,6 +18,10 @@
 						</p>
 						<h2 class="">Browse our content on growth marketing</h2>
 					</div>
+          <div class="search_block">
+            <input class="search_box" type="text" placeholder="Search the blog ..." v-on:input="getBlogs" v-model="searchInput" />
+            <input class="search_btn" type="button" value="Search"/>
+          </div>
 				</div>
 				<div class="case-studies-list">
 					<ul>
@@ -77,6 +81,8 @@
 
 	const data = ref([]);
 
+  let searchInput = '';
+
 	const itemsPerPage = 1;
 	const currentPage = ref(1);
 
@@ -98,16 +104,17 @@
 		currentPage.value -= 1;
 	}
 
-	const getBlogs = async (url) => {
-		const response = await $axios.get(url);
+
+  const getBlogs = async (args=null) => {
+		const response = await $axios.get(`/blogs/?search=${searchInput}`);
 		blogs.value = response.data;
 		data.value = response.data;
-		console.log(response.data);
+		console.log(searchInput);
 	};
 
 	// Life Cycle
 	onMounted(() => {
-		getBlogs("/blogs/");
+		getBlogs();
 	});
 </script>
 
@@ -126,9 +133,9 @@
 	}
 
 	#case-study-page .section__header {
-		flex-direction: column;
+		flex-direction: row;
 		row-gap: 24px;
-		text-align: center;
+		text-align: left;
 	}
 
 	.card {
@@ -193,12 +200,78 @@
 		color: var(--primary-blue);
 	}
 
+  .search_block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .search_box {
+		background: #ffffff;
+		border: 1px solid #dcdcdc;
+		border-radius: 8px;
+		padding: 18px 30px;
+		color: #555555;
+		flex-grow: 3;
+    flex-wrap: wrap;
+    font-size: 1rem;
+	}
+
+  .search_btn {
+		background-color: var(--secondary-dark);
+		border-radius: 8px;
+	}
+	.search_btn:hover {
+		background-color: var(--primary-blue);
+	}
+	.search_btn {
+		padding: 20px 40px;
+		text-decoration: none;
+		font-weight: 500;
+		flex-grow: 1;
+		height: 100%;
+		color: var(--secondary-light);
+	}
+
 	/* MEDIA */
 	@media screen and (max-width: 992px) {
 		.card {
 			grid-template-columns: 1fr;
-			row-gap: 50px;
 			column-gap: 0;
+      padding: 30px;
 		}
+    .card-content {
+      padding: 30px 10px;
+    }
+    .btn {
+      width: 100%;
+    }
+    #case-study-page .section__header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .search_block {
+      width: 100%;
+    }
+	}@media screen and (max-width: 460px) {
+		.card {
+			grid-template-columns: 1fr;
+			column-gap: 0;
+      padding: 30px;
+		}
+    .card-content {
+      padding: 30px 10px;
+    }
+    #case-study-page .section__header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .search_block {
+      width: 100%;
+      flex-direction: column;
+    }
+    .search_box, .search_btn {
+      width: 100%;
+    }
 	}
 </style>
